@@ -25,7 +25,7 @@ elif reader_type == 'Other':
 st.text("Now let's got through the main character")
 st.text_input("Full name")
 
-st.text("Date of birth
+st.text("Date of birth")
 col1, col2, col3 = st.columns(3)
 with col1:
   year = st.number_input("Year")
