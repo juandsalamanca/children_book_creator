@@ -29,7 +29,8 @@ else:
   age = ""
   gender = ""
   reslationship = ""
-elif reader_type == 'Other':
+  
+if reader_type == 'Other':
   other_reader_type = st.text_input('Specify reader type')
 
 
