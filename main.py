@@ -35,6 +35,7 @@ with col3:
   year = st.number_input("Day")
   
 st.selectbox("Gender", ["Male", "Female", "Animal"])
+st.text("General story characteristics")
 st.text_input("When did the story take place")
 st.text_input("Where did the story take place?")
 st.text_input("Any specifics about the time or place that would help bring the story to life? (optional)")
