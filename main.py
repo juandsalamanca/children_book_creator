@@ -13,7 +13,8 @@ category = st.selectbox('Category', category_list)
 desc = category_desc_map[category]
 st.write(desc)
 
-st.text("Reader information")
+
+st.subheader("Reader information")
 reader_type_list = ['Individual reader', 'The whole family', 'General audience', 'Other']
 reader_type = st.selectbox('Reader Type', reader_type_list)
 if reader_type == 'Individual reader':
@@ -22,8 +23,9 @@ if reader_type == 'Individual reader':
   relationship = st.text_input('Relationship to main character')
 elif reader_type == 'Other':
   other_reader_type = st.text_input('Specify reader type')
-  
-st.text("Main character information")
+
+
+st.subheader("Main character information")
 st.text_input("Full name")
 
 st.text("Date of birth")
@@ -36,7 +38,10 @@ with col3:
   year = st.number_input("Day")
   
 st.selectbox("Gender", ["Male", "Female", "Animal"])
-st.text("General story characteristics")
+
+
+st.subheader("General story characteristics")
+
 st.text_input("When did the story take place")
 st.text_input("Where did the story take place?")
 st.text_input("Any specifics about the time or place that would help bring the story to life? (optional)")
