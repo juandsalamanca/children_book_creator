@@ -11,8 +11,9 @@ category_desc_map = {"Faith & Spirituality": "Moments that connect us to God, ho
 
 category = st.selectbox('Category', category_list)
 desc = category_desc_map[category]
-st.text(desc)
+st.write(desc)
 
+st.text("Reader information")
 reader_type_list = ['Individual reader', 'The whole family', 'General audience', 'Other']
 reader_type = st.selectbox('Reader Type', reader_type_list)
 if reader_type == 'Individual reader':
@@ -22,7 +23,7 @@ if reader_type == 'Individual reader':
 elif reader_type == 'Other':
   other_reader_type = st.text_input('Specify reader type')
   
-st.text("Now let's got through the main character")
+st.text("Main character information")
 st.text_input("Full name")
 
 st.text("Date of birth")
