@@ -21,3 +21,25 @@ if reader_type == 'Individual reader':
   relationship = st.text_input('Relationship to main character')
 elif reader_type == 'Other':
   other_reader_type = st.text_input('Specify reader type')
+  
+st.text("Now let's got through the main character")
+st.text_input("Full name")
+
+st.text("Date of birth
+col1, col2, col3 = st.columns(3)
+with col1:
+  year = st.number_input("Year")
+with col2:
+  year = st.number_input("Month")
+with col3:
+  year = st.number_input("Day")
+  
+st.selectbox("Gender", ["Male", "Female", "Animal"])
+st.text_input("When did the story take place")
+st.text_input("Where did the story take place?")
+st.text_input("Any specifics about the time or place that would help bring the story to life? (optional)")
+if reader_type == 'Individual reader':
+  st.text_input("Relationship of the main characyer to the main reader")
+
+st.text_input("Why do you want this story remembered? (optional)")
+st.text_input("Anything else that should be in the story? Funny details, exact phrases, or how the ending should feel?” (short paragraph)")
