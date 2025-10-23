@@ -1,6 +1,10 @@
+import streamlit as st
 import openai
+import os
 
-def write_story(story_type, audience, reader_info, main_character_info, rememberance, extra_details):
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
+def write_story(story_type, reader_info, main_character_info, story_info):
   #client = OpenAI()
   user_prompt = f"""
   I need you to write a storyof the type {story_type} for the audience {audience}
