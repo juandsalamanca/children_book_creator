@@ -58,9 +58,9 @@ extra_specs = st.text_input("Any specifics about the time or place that would he
 rememberance = st.text_input("Why do you want this story remembered? (optional)")
 small_specs = st.text_input("Anything else that should be in the story? Funny details, exact phrases, or how the ending should feel?” (short paragraph)")
 
-reader_info {"type": reader_type, "age": age, "gender": gender, "realtionship": relationship}
+reader_info = {"type": reader_type, "age": age, "gender": gender, "realtionship": relationship}
 main_character_info = {"name": name, "birthdate": f"{str(year)}-{str(month)}-{str(day)}"}
-story_info {"time": time, "place": place, "extra": extra_specs, "small": small_specs}
+story_info = {"time": time, "place": place, "extra": extra_specs, "small": small_specs}
 cat_desc = f"{category}: {desc}"
 
 gen_button = st.button("Generate story")
