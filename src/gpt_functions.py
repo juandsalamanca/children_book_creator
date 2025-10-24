@@ -20,3 +20,21 @@ def write_story(story_type, reader_info, main_character_info, story_info):
       input=messages
   )
   return response.output_text
+
+def create_ilustration(input_text, audience):
+  response = openai.response.create(
+    model="gpt-4o"
+    input=f"Create an image as an ilustration for the following text: {input_text}. It's for s children's book so style it appropriately.",
+    tools=[{"type":"image_generation"}]
+  mage_generation_calls = [
+    output
+    for output in response.output
+    if output.type == "image_generation_call"
+  ]
+
+  image_data = [output.result for output in image_generation_calls]
+
+  if image_data:
+    image_base64 = image_data[0]
+
+  return image_base64
