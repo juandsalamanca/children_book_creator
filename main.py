@@ -65,8 +65,11 @@ cat_desc = f"{category}: {desc}"
 
 gen_button = st.button("Generate story")
 if gen_button:
-  story = write_story(cat_desc, reader_info, main_character_info, story_info) 
-  st.session_state.story = story
+  try:
+    story = write_story(cat_desc, reader_info, main_character_info, story_info) 
+    st.session_state.story = story
+  except Exception as e:
+    st.error(f"Error generating the story: \n {str(e)}")
   
 if st.session_state.story:
   st.write(story)
