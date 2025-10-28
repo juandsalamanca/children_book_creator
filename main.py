@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 from src.gpt_functions import write_story
 
-st.header('Children book generator')
+st.header('StoryKin')
 
 if "story" not in st.session_state:
   st.session_state.story = None
