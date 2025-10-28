@@ -23,7 +23,7 @@ def write_story(story_type, reader_info, main_character_info, story_info):
 
 def create_ilustration(input_text, audience):
   response = openai.response.create(
-    model="gpt-4o"
+    model="gpt-4o",
     input=f"Create an image as an ilustration for the following text: {input_text}. It's for s children's book so style it appropriately.",
     tools=[{"type":"image_generation"}]
   )
