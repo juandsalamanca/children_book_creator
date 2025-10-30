@@ -118,6 +118,7 @@ context = st.text_input("Any context to the story we should know?")
 
 personal_note = st.text_area("Add a personal note to be included with the story (optional)")
 
+highlights = {"emphasis": emphasis, "censored": censored, "context": context, "personal_note": personal_note}
 
 #------------------------------------------------------------------------
 # Narrative Style & Perspective 
@@ -135,6 +136,8 @@ tone = st.selectbox("Preferred tone", ["Heartfelt", "Funny", "Reflective", "Simp
 if tone == "Other":
   tone = st.text_input("Specify tone")
 
+narrative = {"perspective": perspective, "narrator": narrator, "tone": tone}
+
 #------------------------------------------------------------------------
 # Character descriptions
 #------------------------------------------------------------------------
@@ -148,7 +151,6 @@ for i in range(int(number_of_main_characters)):
 
   main_characters_data.append({"name": char_name, "description": char_desc})
 
-
 #------------------------------------------------------------------------
 # Story length & Format
 #------------------------------------------------------------------------
@@ -161,7 +163,7 @@ elif story_length == "Short & Sweet":
 else:
   length_desc = "longer narrative, more plot & description, 600-900 words, 5-6 minute read, 12-14 illustrated scenes, 28-32 pages, Story Pages with text - abt 22-26"
 
-
+format = {"story_length": story_length, "length_description": length_desc}
 #------------------------------------------------------------------------
 # Illustration
 #------------------------------------------------------------------------
@@ -197,7 +199,7 @@ layout = st.selectbox("Preferred layout", ["Full-page illustrations",  "Double-p
 gen_button = st.button("Generate story")
 if gen_button:
   try:
-    story = write_story(cat_desc, reader_info, main_character_info, story_info) 
+    story = write_story(st.session_state.base_story, cat_desc, reader_info, main_character_info, story_info, highlights, narrative, main_characters_data, format) 
     st.session_state.story = story
   except Exception as e:
     st.error(f"Error generating the story: \n {str(e)}")
