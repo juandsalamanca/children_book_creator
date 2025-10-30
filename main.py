@@ -155,6 +155,7 @@ for i in range(int(number_of_main_characters)):
 #------------------------------------------------------------------------
 # Story length & Format
 #------------------------------------------------------------------------
+st.subheader("Format")
 
 story_length = st.selectbox("Preferred story length", ["Tiny tales", "Short & Sweet", "The Whole Story"])
 if story_length == "Tiny tales":
@@ -168,6 +169,8 @@ format = {"story_length": story_length, "length_description": length_desc}
 #------------------------------------------------------------------------
 # Illustration
 #------------------------------------------------------------------------
+
+st.subheader("Illustration")
 
 illustration_style = st.selectbox("Preferred illustration style", ["Watercolor", "Realistic", "Vintage Sketch", "Modern Minimalist", "Playful Tale"])
 if illustration_style == "Watercolor":
@@ -200,7 +203,9 @@ layout = st.selectbox("Preferred layout", ["Full-page illustrations",  "Double-p
 gen_button = st.button("Generate story")
 if gen_button:
   try:
-    story = write_story(st.session_state.base_story, cat_desc, reader_info, main_character_info, story_info, highlights, narrative, main_characters_data, format) 
+    story = write_story(base_story=st.session_state.base_story, story_type=cat_desc, reader_info=reader_info, 
+                        main_character_info=main_character_info, story_info=story_info, highlights=highlights, 
+                        narrative=narrative, main_characters_data=main_characters_data, format=format) 
     st.session_state.story = story
   except Exception as e:
     st.error(f"Error generating the story: \n {str(e)}")
