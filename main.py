@@ -166,6 +166,26 @@ else:
   length_desc = "longer narrative, more plot & description, 600-900 words, 5-6 minute read, 12-14 illustrated scenes, 28-32 pages, Story Pages with text - abt 22-26"
 
 format = {"story_length": story_length, "length_description": length_desc}
+
+
+#------------------------------------------------------------------------
+# Generate story
+#------------------------------------------------------------------------
+
+gen_button = st.button("Generate story")
+if gen_button:
+  try:
+    story = write_story(base_story=st.session_state.base_story, story_type=cat_desc, reader_info=reader_info, 
+                        main_character_info=main_character_info, story_info=story_info, highlights=highlights, 
+                        narrative=narrative, main_characters_data=main_characters_data, format=format) 
+    st.session_state.story = story
+  except Exception as e:
+    st.error(f"Error generating the story: \n {str(e)}")
+  
+if st.session_state.story:
+  st.write(st.session_state.story)
+
+
 #------------------------------------------------------------------------
 # Illustration
 #------------------------------------------------------------------------
@@ -195,20 +215,3 @@ for uploaded_file in uploaded_files:
     photo_list.append(uploaded_file)
 
 layout = st.selectbox("Preferred layout", ["Full-page illustrations",  "Double-page spreads", "Spot illustrations", "Mix of all", "Let us decide"])
-
-#------------------------------------------------------------------------
-# Generate story
-#------------------------------------------------------------------------
-
-gen_button = st.button("Generate story")
-if gen_button:
-  try:
-    story = write_story(base_story=st.session_state.base_story, story_type=cat_desc, reader_info=reader_info, 
-                        main_character_info=main_character_info, story_info=story_info, highlights=highlights, 
-                        narrative=narrative, main_characters_data=main_characters_data, format=format) 
-    st.session_state.story = story
-  except Exception as e:
-    st.error(f"Error generating the story: \n {str(e)}")
-  
-if st.session_state.story:
-  st.write(st.session_state.story)
