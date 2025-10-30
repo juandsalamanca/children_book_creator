@@ -4,11 +4,12 @@ import os
 
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
-def write_story(story_type, reader_info, main_character_info, story_info, highlights, narrative, main_characters_data, format):
-  #client = OpenAI()
+def write_story(base_story, story_type, reader_info, main_character_info, story_info, highlights, narrative, main_characters_data, format):
+  # client = OpenAI()
 
+  # Cosntruct the user prompt
   user_prompt = f"""
-  I need you to write a storyof the type {story_type} for the audience {reader_info["type"]}
+  I need you to modify an existing story that I'll provide for you and turn it into a story of the type {story_type} for the audience {reader_info["type"]}
   """
   if reader_info["type"] == "Individual reader":
     user_prompt += f"of age {reader_info["age"]}, {reader_info["gender"]}"
@@ -42,6 +43,10 @@ def write_story(story_type, reader_info, main_character_info, story_info, highli
   user_prompt += f" {narrative_string}. "
   user_prompt += f" {main_character_string}. "
   user_prompt += f" {format_string}. "
+
+  user_prompt += f" Here is the base story to modify: {base_story} "
+
+  # Send the prompt to GPT-4o-mini
   messages = [{"role":"system", "content":"You are an expert at searching for Movie an TV official information guiding yourself by official sources when available."},
             {"role": "user", "content":user_prompt}]
 
