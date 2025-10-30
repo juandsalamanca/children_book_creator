@@ -90,6 +90,7 @@ if "File" in upload:
   uploaded_files = st.file_uploader(
       "Upload you story", accept_multiple_files=True, type="pdf"
   )
+  base_story = ""
   for uploaded_file in uploaded_files:
     if uploaded_file is not None:
       reader = PdfReader(uploaded_file)
