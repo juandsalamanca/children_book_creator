@@ -162,6 +162,33 @@ else:
   length_desc = "longer narrative, more plot & description, 600-900 words, 5-6 minute read, 12-14 illustrated scenes, 28-32 pages, Story Pages with text - abt 22-26"
 
 
+#------------------------------------------------------------------------
+# Illustration
+#------------------------------------------------------------------------
+
+illustration_style = st.selectbox("Preferred illustration style", ["Watercolor", "Realistic", "Vintage Sketch", "Modern Minimalist", "Playful Tale"])
+if illustration_style == "Watercolor":
+  illustration_description = "Universally loved for keepsakes; soft, timeless, and emotional."
+elif illustration_style == "Realistic":
+  illustration_description = "Perfect for people who want an accurate likeness of their loved one."
+elif illustration_style == "Vintage Sketch":
+  illustration_description = "A nod to heritage and nostalgia, great for legacy stories."
+elif illustration_style == "Modern Minimalist":
+  illustration_description = "Clean and fresh for those with contemporary tastes."
+else:
+  illustration_description = "Cartoon like images. Perfect for capturing lighthearted stories."
+st.write(illustration_description)
+
+includes = st.text_input("People, animals or objects to include: (short text field/list)")
+uploaded_files = st.file_uploader(
+      "Upload a Photo(s) (Optional) ", accept_multiple_files=True, type="pdf"
+  )
+photo_list = []
+for uploaded_file in uploaded_files:
+  if uploaded_file is not None:
+    photo_list.append(uploaded_file)
+
+layout = st.selectbox("Preferred layout", ["Full-page illustrations",  "Double-page spreads", "Spot illustrations", "Mix of all", "Let us decide"])
 
 #------------------------------------------------------------------------
 # Generate story
